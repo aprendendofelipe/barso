@@ -86,16 +86,19 @@ describe('tester', () => {
       expect(process.exit).not.toHaveBeenCalled();
     });
 
-    it('should display a warning message and prompt for confirmation if envMode is not "test"', async () => {
-      await confirmEnvMode('development');
-      await confirmEnvMode('production');
+    it.each([['development'], ['production']])(
+      'should display a warning message and prompt for confirmation if envMode is "%s"',
+      (envMode) => {
+        confirmEnvMode(envMode);
 
-      expect(logger.warning).toHaveBeenCalledWith('You are not running in test mode!');
-      expect(logger.warning).toHaveBeenCalledTimes(2);
-    });
+        expect(logger.warning).toHaveBeenCalledWith('You are not running in test mode!');
+        expect(logger.warning).toHaveBeenCalledOnce();
+      },
+    );
 
     it('should display a warning message and skip tests if user declines confirmation', async () => {
       question.ask.mockImplementation((_, cb) => cb(''));
+      process.exit.mockImplementation(() => {});
       await confirmEnvMode('production');
 
       expect(logger.warning).toHaveBeenCalledWith('You are not running in test mode!');
