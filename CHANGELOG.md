@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.2.0...v0.3.0) (2025-02-18)
+
+
+### Features
+
+* **deps:** update dependencies to latest versions ([3c11787](https://github.com/aprendendofelipe/tabnews-config/commit/3c117877cb957382874cd7f1541a3a6882d1fb5e))
+
 ## [0.2.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.1.0...v0.2.0) (2024-10-08)
 
 
