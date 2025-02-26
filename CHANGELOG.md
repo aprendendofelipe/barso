@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/aprendendofelipe/tabnews-config/compare/v0.3.0...v0.3.1) (2025-02-26)
+
+
+### Bug Fixes
+
+* **cli:** allow filter arguments in test command ([177461f](https://github.com/aprendendofelipe/tabnews-config/commit/177461fb01038974b1598df583f13d711e68b96d))
+
 ## [0.3.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.2.0...v0.3.0) (2025-02-18)
 
 
