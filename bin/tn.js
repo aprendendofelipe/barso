@@ -10,6 +10,7 @@ const tn = program
   .name('tn')
   .version(packageJson.version, '-v, --version', 'Output the current version of tn')
   .description('TabNews command line interface')
+  .allowExcessArguments()
   .configureHelp({ showGlobalOptions: true, sortSubcommands: true, sortOptions: true });
 
 const testCommand = tn
