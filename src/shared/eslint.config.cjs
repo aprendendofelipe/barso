@@ -1,13 +1,11 @@
 const eslintJs = require('@eslint/js');
 const pluginNext = require('@next/eslint-plugin-next');
+const pluginPrimerReact = require('@tabnews/eslint-plugin-primer-react');
+const pluginVitest = require('@vitest/eslint-plugin');
 const pluginImport = require('eslint-plugin-import');
-const pluginJsxA11y = require('eslint-plugin-jsx-a11y');
 const pluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
-const pluginPrimerReact = require('eslint-plugin-primer-react');
 const pluginReact = require('eslint-plugin-react');
 const pluginReactHooks = require('eslint-plugin-react-hooks');
-const pluginVitest = require('eslint-plugin-vitest');
-const pluginVitestGlobals = require('eslint-plugin-vitest-globals');
 const globals = require('globals');
 
 module.exports = [
@@ -45,8 +43,6 @@ module.exports = [
     plugins: {
       '@next/next': pluginNext,
       import: pluginImport,
-      'jsx-a11y': pluginJsxA11y,
-      'primer-react': pluginPrimerReact,
       react: pluginReact,
       'react-hooks': pluginReactHooks,
     },
@@ -55,8 +51,6 @@ module.exports = [
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs['core-web-vitals'].rules,
       ...pluginImport.configs.recommended.rules,
-      ...pluginJsxA11y.flatConfigs.recommended.rules,
-      ...pluginPrimerReact.configs.recommended.rules,
       ...pluginReact.configs.flat.recommended.rules,
       ...pluginReactHooks.configs.recommended.rules,
       '@next/next/no-html-link-for-pages': 0,
@@ -110,10 +104,11 @@ module.exports = [
       ],
     },
   },
+  pluginPrimerReact.getFlatConfigs().recommended,
   {
     files: ['tests/*', '**/*.test.*', '**/*.spec.*'],
     ignores: ['tests/e2e/**'],
-    languageOptions: pluginVitestGlobals.environments.env,
+    languageOptions: pluginVitest.environments.env,
     plugins: {
       vitest: pluginVitest,
     },
