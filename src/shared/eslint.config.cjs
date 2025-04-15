@@ -2,15 +2,17 @@ const eslintJs = require('@eslint/js');
 const pluginNext = require('@next/eslint-plugin-next');
 const pluginPrimerReact = require('@tabnews/eslint-plugin-primer-react');
 const pluginVitest = require('@vitest/eslint-plugin');
+const { defineConfig } = require('eslint/config');
 const pluginImport = require('eslint-plugin-import');
 const pluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
 const pluginReact = require('eslint-plugin-react');
 const pluginReactHooks = require('eslint-plugin-react-hooks');
 const globals = require('globals');
+const tseslint = require('typescript-eslint');
 
-module.exports = [
+module.exports = defineConfig([
+  ...tseslint.configs.recommended,
   {
-    files: ['**/*.{js,mjs,cjs,jsx}'],
     settings: {
       react: {
         version: '18',
@@ -102,6 +104,7 @@ module.exports = [
           ignoreDeclarationSort: true,
         },
       ],
+      '@typescript-eslint/no-require-imports': 0,
     },
   },
   pluginPrimerReact.getFlatConfigs().recommended,
@@ -131,4 +134,4 @@ module.exports = [
   {
     ignores: ['**/.next/**', '**/__snapshots__/*', '**/coverage/**', '**/dist/*'],
   },
-];
+]);
