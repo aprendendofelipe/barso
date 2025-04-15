@@ -3,7 +3,11 @@ import { logger } from 'src/index.js';
 import { confirmEnvMode, getArgs, run, test, watch } from 'src/tester';
 
 describe('tester', () => {
-  beforeEach(vi.clearAllMocks);
+  beforeAll(() => {
+    vi.spyOn(process, 'exit').mockImplementation(() => {});
+  });
+
+  afterEach(vi.clearAllMocks);
 
   const spawn = vi.fn(() => ({
     on: vi.fn(),
@@ -54,7 +58,6 @@ describe('tester', () => {
   it('should exit with non-zero code if child process exits with a non-zero code', async () => {
     const on = vi.fn((_, cb) => cb(1));
     const spawn = vi.fn(() => ({ on }));
-    vi.spyOn(process, 'exit').mockImplementation(() => {});
 
     await test({ spawn });
 
@@ -63,12 +66,9 @@ describe('tester', () => {
 
   describe('checkEnvMode', () => {
     beforeAll(() => {
-      vi.spyOn(question, 'ask');
-      vi.spyOn(logger, 'warning');
-      vi.spyOn(process, 'exit');
+      vi.spyOn(question, 'ask').mockImplementation(() => {});
+      vi.spyOn(logger, 'warning').mockImplementation(() => {});
     });
-
-    beforeEach(vi.resetAllMocks);
 
     it('should not display a warning message and exit if envMode is undefined', async () => {
       await confirmEnvMode();
@@ -98,7 +98,6 @@ describe('tester', () => {
 
     it('should display a warning message and skip tests if user declines confirmation', async () => {
       question.ask.mockImplementation((_, cb) => cb(''));
-      process.exit.mockImplementation(() => {});
       await confirmEnvMode('production');
 
       expect(logger.warning).toHaveBeenCalledWith('You are not running in test mode!');
@@ -111,7 +110,7 @@ describe('tester', () => {
     });
 
     it('should display a warning message and run tests if user confirms', async () => {
-      question.ask.mockImplementation((_, cb) => cb('y'));
+      question.ask.mockImplementationOnce((_, cb) => cb('y'));
       await confirmEnvMode('development');
 
       expect(logger.warning).toHaveBeenCalledWith('You are not running in test mode!');
