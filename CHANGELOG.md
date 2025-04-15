@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.3.1...v0.4.0) (2025-04-15)
+
+
+### Features
+
+* **eslint:** add TypeScript-specific rules to shared config ([36e3465](https://github.com/aprendendofelipe/tabnews-config/commit/36e3465b27e120942c455bffb328e9fbd5b70d52))
+
 ## [0.3.1](https://github.com/aprendendofelipe/tabnews-config/compare/v0.3.0...v0.3.1) (2025-02-26)
 
 
