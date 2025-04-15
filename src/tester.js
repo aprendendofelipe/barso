@@ -47,9 +47,9 @@ export async function confirmEnvMode(mode) {
 
 export function getArgs(options = {}) {
   const args = ['vitest'];
-  !options.watch && args.push('run');
-  options.coverage && args.push('--coverage');
-  options.testNamePattern && args.push('--testNamePattern', options.testNamePattern);
-  Array.isArray(options.args) && args.push(...options.args);
+  if (!options.watch) args.push('run');
+  if (options.coverage) args.push('--coverage');
+  if (options.testNamePattern) args.push('--testNamePattern', options.testNamePattern);
+  if (Array.isArray(options.args)) args.push(...options.args);
   return args;
 }
