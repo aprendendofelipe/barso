@@ -10,19 +10,17 @@ const originalNodeEnv = process.env.NODE_ENV;
 describe('Envs', () => {
   beforeAll(() => {
     vi.spyOn(fs, 'existsSync');
-    vi.spyOn(logger, 'done');
-    vi.spyOn(logger, 'info');
-    vi.spyOn(logger, 'warning');
+    vi.spyOn(logger, 'done').mockImplementation(() => {});
+    vi.spyOn(logger, 'info').mockImplementation(() => {});
+    vi.spyOn(logger, 'warning').mockImplementation(() => {});
   });
 
-  beforeEach(vi.resetAllMocks);
-
   afterEach(() => {
+    vi.clearAllMocks();
     delete process.env.NODE_ENV;
   });
 
   afterAll(() => {
-    vi.restoreAllMocks();
     process.env.NODE_ENV = originalNodeEnv;
   });
 

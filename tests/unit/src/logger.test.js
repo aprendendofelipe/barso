@@ -3,13 +3,12 @@ import { done, error, info, warning } from 'src/logger.js';
 
 describe('logger', () => {
   beforeAll(() => {
-    vi.spyOn(console, 'error');
-    vi.spyOn(console, 'info');
-    vi.spyOn(console, 'warn');
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    vi.spyOn(console, 'info').mockImplementation(() => {});
+    vi.spyOn(console, 'warn').mockImplementation(() => {});
   });
 
-  beforeEach(vi.resetAllMocks);
-  afterAll(vi.restoreAllMocks);
+  afterEach(vi.clearAllMocks);
 
   describe('done', () => {
     it('should log a message with a checkmark', () => {
