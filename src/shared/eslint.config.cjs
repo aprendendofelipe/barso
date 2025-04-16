@@ -11,7 +11,8 @@ const globals = require('globals');
 const tseslint = require('typescript-eslint');
 
 module.exports = defineConfig([
-  ...tseslint.configs.recommended,
+  eslintJs.configs.recommended,
+  tseslint.configs.recommended,
   {
     settings: {
       react: {
@@ -49,13 +50,21 @@ module.exports = defineConfig([
       'react-hooks': pluginReactHooks,
     },
     rules: {
-      ...eslintJs.configs.recommended.rules,
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs['core-web-vitals'].rules,
       ...pluginImport.configs.recommended.rules,
       ...pluginReact.configs.flat.recommended.rules,
       ...pluginReactHooks.configs.recommended.rules,
-      '@next/next/no-html-link-for-pages': 0,
+      '@typescript-eslint/no-require-imports': 0,
+      '@typescript-eslint/no-unused-vars': [
+        'warn',
+        {
+          argsIgnorePattern: '^_',
+          caughtErrorsIgnorePattern: '^_',
+          destructuredArrayIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
       'import/newline-after-import': 'warn',
       'import/no-duplicates': 'warn',
       'import/no-useless-path-segments': [
@@ -84,13 +93,6 @@ module.exports = defineConfig([
       'no-console': ['warn', { allow: ['warn', 'error'] }],
       'no-control-regex': 0,
       'no-sparse-arrays': 0,
-      'no-unused-vars': [
-        'warn',
-        {
-          vars: 'all',
-          args: 'after-used',
-        },
-      ],
       'prefer-const': 'warn',
       'react/react-in-jsx-scope': 0,
       'react/prop-types': 0,
@@ -104,7 +106,6 @@ module.exports = defineConfig([
           ignoreDeclarationSort: true,
         },
       ],
-      '@typescript-eslint/no-require-imports': 0,
     },
   },
   pluginPrimerReact.getFlatConfigs().recommended,
