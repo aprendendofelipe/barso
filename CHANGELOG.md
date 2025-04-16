@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/aprendendofelipe/tabnews-config/compare/v0.4.0...v0.4.1) (2025-04-16)
+
+
+### Bug Fixes
+
+* **eslint:** update ESLint config for fix TypeScript support ([ad923f4](https://github.com/aprendendofelipe/tabnews-config/commit/ad923f477cb541baafab5c8f75bbdf2474293164))
+
 ## [0.4.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.3.1...v0.4.0) (2025-04-15)
 
 
