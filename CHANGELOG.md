@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.2](https://github.com/aprendendofelipe/tabnews-config/compare/v0.4.1...v0.4.2) (2025-04-21)
+
+
+### Bug Fixes
+
+* **eslint:** add file patterns to eslint configuration ([c03d2c1](https://github.com/aprendendofelipe/tabnews-config/commit/c03d2c1b0d788aab7713bc8a371ff56fbaf6fa55))
+* **eslint:** disable @next/next/no-html-link-for-pages rule ([59658d7](https://github.com/aprendendofelipe/tabnews-config/commit/59658d750e9b0936292b468c0ff1b976fe3f04bc))
+
 ## [0.4.1](https://github.com/aprendendofelipe/tabnews-config/compare/v0.4.0...v0.4.1) (2025-04-16)
 
 
