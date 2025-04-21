@@ -11,8 +11,6 @@ const globals = require('globals');
 const tseslint = require('typescript-eslint');
 
 module.exports = defineConfig([
-  eslintJs.configs.recommended,
-  tseslint.configs.recommended,
   {
     settings: {
       react: {
@@ -46,14 +44,13 @@ module.exports = defineConfig([
     plugins: {
       '@next/next': pluginNext,
       import: pluginImport,
-      react: pluginReact,
       'react-hooks': pluginReactHooks,
     },
+    extends: [eslintJs.configs.recommended, tseslint.configs.recommended, pluginReact.configs.flat.recommended],
     rules: {
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs['core-web-vitals'].rules,
       ...pluginImport.configs.recommended.rules,
-      ...pluginReact.configs.flat.recommended.rules,
       ...pluginReactHooks.configs.recommended.rules,
       '@typescript-eslint/no-require-imports': 0,
       '@typescript-eslint/no-unused-vars': [
@@ -116,8 +113,8 @@ module.exports = defineConfig([
     plugins: {
       vitest: pluginVitest,
     },
+    extends: [pluginVitest.configs.recommended],
     rules: {
-      ...pluginVitest.configs.recommended.rules,
       'vitest/no-conditional-in-test': 'warn',
       'vitest/no-disabled-tests': 'warn',
       'vitest/no-focused-tests': 'warn',
