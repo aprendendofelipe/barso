@@ -34,8 +34,8 @@ module.exports = defineConfig([
         ...globals.es2022,
         ...globals.node,
       },
+      ecmaVersion: 'latest',
       parserOptions: {
-        ecmaVersion: 2022,
         ecmaFeatures: {
           jsx: true,
         },
