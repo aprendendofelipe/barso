@@ -12,6 +12,7 @@ const tseslint = require('typescript-eslint');
 
 module.exports = defineConfig([
   {
+    files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
     settings: {
       react: {
         version: '18',
