@@ -52,6 +52,7 @@ module.exports = defineConfig([
       ...pluginNext.configs['core-web-vitals'].rules,
       ...pluginImport.configs.recommended.rules,
       ...pluginReactHooks.configs.recommended.rules,
+      '@next/next/no-html-link-for-pages': 0,
       '@typescript-eslint/no-require-imports': 0,
       '@typescript-eslint/no-unused-vars': [
         'warn',
