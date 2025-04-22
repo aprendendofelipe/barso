@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.4.2...v0.5.0) (2025-04-22)
+
+
+### Features
+
+* **ESLint:** add additional Vitest rules ([f434d66](https://github.com/aprendendofelipe/tabnews-config/commit/f434d66872b03f6de4e01bdc7195aec89cd87d12))
+
 ## [0.4.2](https://github.com/aprendendofelipe/tabnews-config/compare/v0.4.1...v0.4.2) (2025-04-21)
 
 
