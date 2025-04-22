@@ -119,9 +119,13 @@ module.exports = defineConfig([
     rules: {
       'vitest/no-conditional-in-test': 'warn',
       'vitest/no-disabled-tests': 'warn',
+      'vitest/no-duplicate-hooks': 'warn',
       'vitest/no-focused-tests': 'warn',
+      'vitest/no-standalone-expect': 'warn',
+      'vitest/prefer-spy-on': 'warn',
       'vitest/prefer-strict-equal': 'warn',
       'vitest/prefer-to-be': 'warn',
+      'vitest/require-to-throw-message': 'warn',
     },
   },
   {
