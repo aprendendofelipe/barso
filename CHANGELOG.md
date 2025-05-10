@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.6.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.5.0...v0.6.0) (2025-05-10)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint:** Projects that define inline components inside render functions will now fail linting due to the new `react/no-unstable-nested-components` rule being set to `error`. Manual changes are required to comply with the rule.
+
+### Features
+
+* **eslint:** add React rule to disallow useless fragments ([f2cc4b2](https://github.com/aprendendofelipe/tabnews-config/commit/f2cc4b2ad7559c6e15c10144f1fe2dc1ffbec419))
+* **eslint:** add rule to disallow nested components in React ([8b02f00](https://github.com/aprendendofelipe/tabnews-config/commit/8b02f000154d3549681da09a584d15396de56a61))
+
+
+### Miscellaneous Chores
+
+* update dependencies to latest versions ([ba3d0e2](https://github.com/aprendendofelipe/tabnews-config/commit/ba3d0e2755fc380ae94445ada38e46989b4ac140))
+
 ## [0.5.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.4.2...v0.5.0) (2025-04-22)
 
 
