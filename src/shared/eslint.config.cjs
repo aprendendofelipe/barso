@@ -94,6 +94,7 @@ module.exports = defineConfig([
       'no-sparse-arrays': 0,
       'prefer-const': 'warn',
       'react/jsx-no-useless-fragment': ['warn', { allowExpressions: true }],
+      'react/no-unstable-nested-components': 'error',
       'react/react-in-jsx-scope': 0,
       'react/prop-types': 0,
       'react/no-unknown-property': ['error', { ignore: ['global', 'jsx'] }],
