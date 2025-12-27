@@ -1,1 +1,1 @@
-export { default } from '@tabnews/config/eslint';
+export { default } from 'barso/eslint';

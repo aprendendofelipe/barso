@@ -1,4 +1,4 @@
-import createConfig from '@tabnews/config/vitest';
+import createConfig from 'barso/vitest';
 
 describe('Vitest Config', () => {
   const defaultConfig = createConfig();

@@ -1,50 +1,41 @@
+name: Release
 on:
   push:
     branches:
       - main
-name: Release
+permissions: {}
+concurrency:
+  group: release
+  cancel-in-progress: false
 
 jobs:
-  release-please:
-    name: Please PR
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: googleapis/release-please-action@v4
-        id: release-please
-        with:
-          token: ${{secrets.RELEASE_PLEASE_GITHUB_TOKEN}}
-          release-type: node
-
-    outputs:
-      release_created: ${{ steps.release-please.outputs.release_created }}
-
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    needs: release-please
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: github.repository_owner == 'aprendendofelipe'
+
+    permissions:
+      id-token: write
+      contents: read
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 'lts/hydrogen'
+          node-version: '24'
           registry-url: 'https://registry.npmjs.org'
-          cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --ignore-scripts
 
-      - name: Publish to npm
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to NPM
+        run: pnpm publish
+        timeout-minutes: 2

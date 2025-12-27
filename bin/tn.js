@@ -1,10 +1,10 @@
 #!/usr/bin/env node
-import { envs, logger, test } from '@tabnews/config';
+import { envs, logger, test } from 'barso';
 import { program } from 'commander';
 import { spawn } from 'node:child_process';
 import { createRequire } from 'node:module';
 
-const packageJson = createRequire(import.meta.url)('@tabnews/config/package.json');
+const packageJson = createRequire(import.meta.url)('barso/package.json');
 
 const tn = program
   .name('tn')

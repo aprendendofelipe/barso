@@ -1,6 +1,6 @@
 import { execSync } from 'node:child_process';
 
-import eslintConfig from '@tabnews/config/eslint';
+import eslintConfig from 'barso/eslint';
 
 describe('ESLint', () => {
   it('should get ESLint shared config', () => {

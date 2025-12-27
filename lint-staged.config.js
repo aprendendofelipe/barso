@@ -1,1 +1,1 @@
-export { pnpm as default } from '@tabnews/config/lint-staged';
+export { pnpm as default } from 'barso/lint-staged';

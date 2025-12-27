@@ -1,7 +1,7 @@
 {
-  "name": "@tabnews/config",
+  "name": "barso",
   "version": "0.6.0",
-  "description": "Configurações padronizadas dos projetos TabNews",
+  "description": "Configurações compartilhadas para projetos JS/TS",
   "license": "MIT",
   "type": "module",
   "main": "src/index.js",
@@ -14,15 +14,16 @@
     "./vitest": "./src/shared/vitest.config.js"
   },
   "bin": {
+    "barso": "bin/tn.js",
     "tn": "bin/tn.js"
   },
   "files": [
     "src"
   ],
   "scripts": {
-    "tn": "tn",
-    "test": "tn test",
-    "test:run": "tn test run",
+    "barso": "barso",
+    "test": "barso test",
+    "test:run": "barso test run",
     "lint": "eslint . --max-warnings 0 && prettier --check .",
     "format": "eslint --fix . && prettier --write .",
     "commit": "cz",
@@ -61,14 +62,17 @@
   "devDependencies": {
     "@commitlint/cli": "19.8.1",
     "@commitlint/config-conventional": "19.8.1",
-    "@tabnews/config": "file:",
+    "barso": "file:",
     "commitizen": "4.3.1",
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
     "lint-staged": "15.5.2"
   },
-  "author": "Turma do TabNews",
-  "repository": "aprendendofelipe/tabnews-config",
+  "author": "aprendendofelipe",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aprendendofelipe/barso.git"
+  },
   "keywords": [
     "cli",
     "config",
