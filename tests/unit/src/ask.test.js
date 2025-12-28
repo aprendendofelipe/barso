@@ -31,17 +31,15 @@ describe('ask', () => {
 
     await ask('Question', callback, readline);
 
-    expect(callback).toHaveBeenCalledWith('Mock answer');
-    expect(callback).toHaveBeenCalledOnce();
+    expect(callback).toHaveBeenCalledExactlyOnceWith('Mock answer');
   });
 
   it('should format the question correctly if it is an array', async () => {
     await ask(['Enter your username:', '(case-sensitive)'], undefined, readline);
 
-    expect(rl.question).toHaveBeenCalledWith(
+    expect(rl.question).toHaveBeenCalledExactlyOnceWith(
       '\x1b[1mEnter your username:\x1b[0m \x1b[2m(case-sensitive)\x1b[0m',
       expect.any(Function),
     );
-    expect(rl.question).toHaveBeenCalledOnce();
   });
 });

@@ -11,12 +11,7 @@ describe('ESLint', () => {
   });
 
   it('should pass ESLint for all files', () => {
-    let result;
-    try {
-      result = execSync('npx eslint .').toString().trim();
-    } catch (error) {
-      expect(error.stdout?.toString()).toBe('');
-    }
+    const result = execSync('npx eslint .').toString().trim();
     expect(result).toBe('');
   });
 });

@@ -1,14 +1,17 @@
 const eslintJs = require('@eslint/js');
 const pluginNext = require('@next/eslint-plugin-next');
-const pluginPrimerReact = require('@tabnews/eslint-plugin-primer-react');
 const pluginVitest = require('@vitest/eslint-plugin');
 const { defineConfig } = require('eslint/config');
+const pluginGithub = require('eslint-plugin-github');
 const pluginImport = require('eslint-plugin-import');
 const pluginPrettierRecommended = require('eslint-plugin-prettier/recommended');
+const pluginPrimerReact = require('eslint-plugin-primer-react');
 const pluginReact = require('eslint-plugin-react');
 const pluginReactHooks = require('eslint-plugin-react-hooks');
 const globals = require('globals');
 const tseslint = require('typescript-eslint');
+
+const githubReact = pluginGithub.default.getFlatConfigs().react;
 
 module.exports = defineConfig([
   {
@@ -109,7 +112,25 @@ module.exports = defineConfig([
       ],
     },
   },
-  pluginPrimerReact.getFlatConfigs().recommended,
+  {
+    languageOptions: {
+      parserOptions: {
+        sourceType: 'module',
+        ecmaFeatures: {
+          jsx: true,
+        },
+      },
+    },
+    plugins: {
+      ...githubReact.plugins,
+      'primer-react': pluginPrimerReact,
+    },
+    rules: {
+      ...githubReact.rules,
+      ...pluginPrimerReact.configs.recommended.rules,
+    },
+    settings: pluginPrimerReact.configs.recommended.settings,
+  },
   {
     files: ['tests/*', '**/*.test.*', '**/*.spec.*'],
     ignores: ['tests/e2e/**'],

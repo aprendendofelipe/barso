@@ -24,7 +24,7 @@ describe('tester', () => {
       spawn,
     });
 
-    expect(spawn).toHaveBeenCalledWith(
+    expect(spawn).toHaveBeenCalledExactlyOnceWith(
       'npx',
       ['vitest', 'run', '--coverage', '--testNamePattern', 'somePattern', 'arg1', 'arg2'],
       {
@@ -32,27 +32,24 @@ describe('tester', () => {
         shell: true,
       },
     );
-    expect(spawn).toHaveBeenCalledOnce();
   });
 
   it('should run by run()', async () => {
     await run({ spawn, skipServices: true });
 
-    expect(spawn).toHaveBeenCalledWith('npx', ['vitest', 'run'], {
+    expect(spawn).toHaveBeenCalledExactlyOnceWith('npx', ['vitest', 'run'], {
       stdio: 'inherit',
       shell: true,
     });
-    expect(spawn).toHaveBeenCalledOnce();
   });
 
   it('should run by watch()', async () => {
     await watch({ spawn, skipServices: true });
 
-    expect(spawn).toHaveBeenCalledWith('npx', ['vitest'], {
+    expect(spawn).toHaveBeenCalledExactlyOnceWith('npx', ['vitest'], {
       stdio: 'inherit',
       shell: true,
     });
-    expect(spawn).toHaveBeenCalledOnce();
   });
 
   it('should exit with non-zero code if child process exits with a non-zero code', async () => {
@@ -91,8 +88,7 @@ describe('tester', () => {
       (envMode) => {
         confirmEnvMode(envMode);
 
-        expect(logger.warning).toHaveBeenCalledWith('You are not running in test mode!');
-        expect(logger.warning).toHaveBeenCalledOnce();
+        expect(logger.warning).toHaveBeenCalledExactlyOnceWith('You are not running in test mode!');
       },
     );
 

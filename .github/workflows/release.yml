@@ -9,10 +9,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  release-please:
+    name: Please PR
+    runs-on: ubuntu-latest
+    if: github.repository_owner == 'aprendendofelipe'
+
+    steps:
+      - uses: googleapis/release-please-action@v4
+        id: release-please
+        with:
+          token: ${{secrets.RELEASE_PLEASE_GITHUB_TOKEN}}
+
+    outputs:
+      release_created: ${{ steps.release-please.outputs.release_created }}
+
   publish:
     name: Publish to npm
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'aprendendofelipe'
+    needs: release-please
+    if: needs.release-please.outputs.release_created
 
     permissions:
       id-token: write
