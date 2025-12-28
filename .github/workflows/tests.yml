@@ -12,7 +12,8 @@ jobs:
     strategy:
       matrix:
         node:
-          - version: 20
+          - version: 22
+          - version: 24
         os:
           - ubuntu-latest
           - windows-latest
@@ -22,18 +23,17 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9
+          version: 10
 
       - name: Install Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node.version }}
-          cache: 'pnpm'
 
       - name: Install dependencies
         run: pnpm install

@@ -40,8 +40,7 @@ describe('Envs', () => {
 
       load('development');
 
-      expect(logger.info).toHaveBeenCalledWith('Loading envs for development');
-      expect(logger.info).toHaveBeenCalledOnce();
+      expect(logger.info).toHaveBeenCalledExactlyOnceWith('Loading envs for development');
     });
 
     it('should inform loaded files', () => {
@@ -49,8 +48,7 @@ describe('Envs', () => {
 
       load('test');
 
-      expect(logger.done).toHaveBeenCalledWith('Loaded file: .env.test.local');
-      expect(logger.done).toHaveBeenCalledOnce();
+      expect(logger.done).toHaveBeenCalledExactlyOnceWith('Loaded file: .env.test.local');
     });
 
     it('should display a warning message if NODE_ENV is different from the mode', () => {
@@ -58,8 +56,7 @@ describe('Envs', () => {
 
       load('development');
 
-      expect(logger.warning).toHaveBeenCalledWith('NODE_ENV=production, but loading envs for development');
-      expect(logger.warning).toHaveBeenCalledOnce();
+      expect(logger.warning).toHaveBeenCalledExactlyOnceWith('NODE_ENV=production, but loading envs for development');
     });
 
     it('should call dotenv only for existent files', () => {
@@ -71,14 +68,11 @@ describe('Envs', () => {
 
       expect(fs.existsSync).toHaveBeenCalledTimes(4);
 
-      expect(dotenv.config).toHaveBeenCalledWith({ path: '.env.development.local' });
-      expect(dotenv.config).toHaveBeenCalledOnce();
+      expect(dotenv.config).toHaveBeenCalledExactlyOnceWith({ path: '.env.development.local' });
 
-      expect(dotenvExpand.expand).toHaveBeenCalledWith({ parsed: {} });
-      expect(dotenvExpand.expand).toHaveBeenCalledOnce();
+      expect(dotenvExpand.expand).toHaveBeenCalledExactlyOnceWith({ parsed: {} });
 
-      expect(logger.done).toHaveBeenCalledWith('Loaded file: .env.development.local');
-      expect(logger.done).toHaveBeenCalledOnce();
+      expect(logger.done).toHaveBeenCalledExactlyOnceWith('Loaded file: .env.development.local');
     });
   });
 
@@ -117,8 +111,7 @@ describe('Envs', () => {
 
       display(mode);
 
-      expect(logger.warning).toHaveBeenCalledWith('NODE_ENV=production, but loading envs for development');
-      expect(logger.warning).toHaveBeenCalledOnce();
+      expect(logger.warning).toHaveBeenCalledExactlyOnceWith('NODE_ENV=production, but loading envs for development');
       expect(logger.info).not.toHaveBeenCalled();
     });
 
@@ -128,8 +121,7 @@ describe('Envs', () => {
 
       display(mode);
 
-      expect(logger.info).toHaveBeenCalledWith('Loading envs for development');
-      expect(logger.info).toHaveBeenCalledOnce();
+      expect(logger.info).toHaveBeenCalledExactlyOnceWith('Loading envs for development');
       expect(logger.warning).not.toHaveBeenCalled();
     });
   });
