@@ -16,8 +16,7 @@ describe('logger', () => {
 
       done(message);
 
-      expect(console.info).toHaveBeenCalledWith('\x1b[32m%s\x1b[0m', '✔', message);
-      expect(console.info).toHaveBeenCalledOnce();
+      expect(console.info).toHaveBeenCalledExactlyOnceWith('\x1b[32m%s\x1b[0m', '✔', message);
     });
 
     it('should log multiple messages with a checkmark', () => {
@@ -26,8 +25,7 @@ describe('logger', () => {
 
       done(message1, message2);
 
-      expect(console.info).toHaveBeenCalledWith('\x1b[32m%s\x1b[0m', '✔', message1, message2);
-      expect(console.info).toHaveBeenCalledOnce();
+      expect(console.info).toHaveBeenCalledExactlyOnceWith('\x1b[32m%s\x1b[0m', '✔', message1, message2);
     });
   });
 
@@ -37,8 +35,7 @@ describe('logger', () => {
 
       error(message);
 
-      expect(console.error).toHaveBeenCalledWith('\x1b[31m%s\x1b[0m', '✖', message);
-      expect(console.error).toHaveBeenCalledOnce();
+      expect(console.error).toHaveBeenCalledExactlyOnceWith('\x1b[31m%s\x1b[0m', '✖', message);
     });
 
     it('should log multiple error messages', () => {
@@ -47,8 +44,7 @@ describe('logger', () => {
 
       error(message1, message2);
 
-      expect(console.error).toHaveBeenCalledWith('\x1b[31m%s\x1b[0m', '✖', `${message1} ${message2}`);
-      expect(console.error).toHaveBeenCalledOnce();
+      expect(console.error).toHaveBeenCalledExactlyOnceWith('\x1b[31m%s\x1b[0m', '✖', `${message1} ${message2}`);
     });
   });
 
@@ -58,8 +54,7 @@ describe('logger', () => {
 
       info(message);
 
-      expect(console.info).toHaveBeenCalledWith(message);
-      expect(console.info).toHaveBeenCalledOnce();
+      expect(console.info).toHaveBeenCalledExactlyOnceWith(message);
     });
 
     it('should log multiple info messages', () => {
@@ -68,8 +63,7 @@ describe('logger', () => {
 
       info(message1, message2);
 
-      expect(console.info).toHaveBeenCalledWith(message1, message2);
-      expect(console.info).toHaveBeenCalledOnce();
+      expect(console.info).toHaveBeenCalledExactlyOnceWith(message1, message2);
     });
   });
 
