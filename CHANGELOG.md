@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.6.1](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.0...barso-v0.6.1) (2026-01-05)
+
+
+### Features
+
+* add preview release workflow ([8d1c19c](https://github.com/aprendendofelipe/barso/commit/8d1c19c08760fbc1dd0b8a0e8622ea8c9d647ef2))
+* **deps:** update dependencies ([c4c4781](https://github.com/aprendendofelipe/barso/commit/c4c4781faf99d1614316fdd32d19cea2cc6fe3f9))
+* **release:** configure release-please action ([df21a9c](https://github.com/aprendendofelipe/barso/commit/df21a9c36b77a78b849d33b4fd41965c24b38afb))
+
 ## [0.6.0](https://github.com/aprendendofelipe/tabnews-config/compare/v0.5.0...v0.6.0) (2025-05-10)
 
 
