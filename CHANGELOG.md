@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.2](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.1...barso-v0.6.2) (2026-03-18)
+
+
+### Features
+
+* **lint-staged:** support TypeScript files in linting configuration ([7dee718](https://github.com/aprendendofelipe/barso/commit/7dee718d6dc1a160d75b5e3fbc8576d44b84a886))
+* update dependencies ([0c5ff82](https://github.com/aprendendofelipe/barso/commit/0c5ff8231d2d0b3d00ddf7a11a55350922368593))
+
 ## [0.6.1](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.0...barso-v0.6.1) (2026-01-05)
 
 
