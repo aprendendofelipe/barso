@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.6.3](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.2...barso-v0.6.3) (2026-03-19)
+
+
+### Features
+
+* **deps:** revert update of `@vitejs/plugin-react` and `jsdom` ([a6a6e3b](https://github.com/aprendendofelipe/barso/commit/a6a6e3b4c23568a1a867c8d01d90c2a0b541f942))
+
 ## [0.6.2](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.1...barso-v0.6.2) (2026-03-18)
 
 
