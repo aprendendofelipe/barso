@@ -13,16 +13,15 @@ const tn = program
   .allowExcessArguments()
   .configureHelp({ showGlobalOptions: true, sortSubcommands: true, sortOptions: true });
 
-const testCommand = tn
-  .command('test')
-  .description('Start test environment')
-  .summary('Run tests')
-  .option('--coverage', 'Generate coverage report')
-  .option('-t, --test-name-pattern <test>', 'Run a specific test');
+const testCommand = tn.command('test').description('Start test environment').summary('Run tests').allowUnknownOption();
 
-testCommand.command('watch', { isDefault: true }).description('Watch mode').action(getCommand('testWatch'));
+testCommand
+  .command('watch', { isDefault: true })
+  .description('Watch mode')
+  .allowUnknownOption()
+  .action(getCommand('testWatch'));
 
-testCommand.command('run').description('Run once').action(getCommand('testRun'));
+testCommand.command('run').description('Run once').allowUnknownOption().action(getCommand('testRun'));
 
 tn.parse();
 

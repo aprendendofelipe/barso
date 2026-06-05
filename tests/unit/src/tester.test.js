@@ -17,9 +17,7 @@ describe('tester', () => {
     await test({
       envMode: 'test',
       watch: false,
-      coverage: true,
-      testNamePattern: 'somePattern',
-      args: ['arg1', 'arg2'],
+      args: ['--coverage', '--testNamePattern', 'somePattern', 'arg1', 'arg2'],
       skipServices: true,
       spawn,
     });
@@ -124,8 +122,7 @@ describe('tester', () => {
       expect(getArgs()[0]).toBe('vitest');
       expect(getArgs({ watch: false })[0]).toBe('vitest');
       expect(getArgs({ watch: true })[0]).toBe('vitest');
-      expect(getArgs({ coverage: true })[0]).toBe('vitest');
-      expect(getArgs({ testNamePattern: 'somePattern' })[0]).toBe('vitest');
+      expect(getArgs({ args: ['--coverage'] })[0]).toBe('vitest');
       expect(getArgs({ args: ['arg1', 'arg2'] })[0]).toBe('vitest');
     });
 
@@ -136,37 +133,21 @@ describe('tester', () => {
       expect(getArgs()).toStrictEqual(['vitest', 'run']);
     });
 
-    it('should include "--coverage" only when coverage option is true', () => {
-      expect(getArgs({ coverage: true })).toContain('--coverage');
-
-      expect(getArgs({ coverage: false })).not.toContain('--coverage');
-      expect(getArgs({ coverage: undefined })).not.toContain('--coverage');
-      expect(getArgs()).not.toContain('--coverage');
-    });
-
-    it('should include "--testNamePattern" and the provided pattern only when testNamePattern option is provided', () => {
+    it('should forward any vitest arguments provided in args', () => {
       const args = getArgs({
-        testNamePattern: 'somePattern',
-      });
-
-      expect(args).toContain('--testNamePattern');
-      expect(args).toContain('somePattern');
-
-      expect(getArgs({ testNamePattern: '' })).not.toContain('--testNamePattern');
-      expect(getArgs()).not.toContain('--testNamePattern');
-    });
-
-    it('should include provided arguments when args option is a non-empty array', () => {
-      const args = getArgs({
-        args: ['arg1', 'arg2'],
+        args: ['--coverage', '--reporter agent', '-t', 'somePattern'],
       });
 
       expect(args[0]).toBe('vitest');
-      expect(args).toContain('arg1');
-      expect(args).toContain('arg2');
-      expect(args).not.toContain('--args');
+      expect(args).toContain('--coverage');
+      expect(args).toContain('--reporter agent');
+      expect(args).toContain('-t');
+      expect(args).toContain('somePattern');
+    });
 
-      expect(getArgs({ args: [] })).not.toContain('--args');
+    it('should not include extra arguments when args is empty or absent', () => {
+      expect(getArgs({ args: [] })).toStrictEqual(['vitest', 'run']);
+      expect(getArgs()).toStrictEqual(['vitest', 'run']);
     });
   });
 });
