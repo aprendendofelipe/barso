@@ -22,8 +22,9 @@
   ],
   "scripts": {
     "barso": "barso",
-    "test": "barso test",
+    "test": "barso test --reporter agent",
     "test:run": "barso test run",
+    "test:watch": "barso test",
     "lint": "eslint . --max-warnings 0 && prettier --check .",
     "format": "eslint --fix . && prettier --write .",
     "commit": "cz",
