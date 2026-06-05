@@ -15,11 +15,10 @@ export async function watch(options) {
 export async function test(options = {}) {
   await confirmEnvMode(options.envMode);
 
-  const args = getArgs(options);
+  const { command, args } = getSpawnTarget(options);
 
-  const child = (options.spawn || spawn)('npx', args, {
+  const child = (options.spawn || spawn)(command, args, {
     stdio: 'inherit',
-    shell: true,
   });
 
   child.on('close', (code) => {
@@ -43,6 +42,16 @@ export async function confirmEnvMode(mode) {
   });
 
   return envMode;
+}
+
+export function getSpawnTarget(options = {}) {
+  const vitestArgs = getArgs(options);
+
+  if (process.platform === 'win32') {
+    return { command: 'cmd.exe', args: ['/c', 'npx', ...vitestArgs] };
+  }
+
+  return { command: 'npx', args: vitestArgs };
 }
 
 export function getArgs(options = {}) {

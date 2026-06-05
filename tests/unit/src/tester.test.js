@@ -1,6 +1,6 @@
 import * as question from 'src/ask';
 import { logger } from 'src/index.js';
-import { confirmEnvMode, getArgs, run, test, watch } from 'src/tester';
+import { confirmEnvMode, getArgs, getSpawnTarget, run, test, watch } from 'src/tester';
 
 describe('tester', () => {
   beforeAll(() => {
@@ -22,31 +22,33 @@ describe('tester', () => {
       spawn,
     });
 
-    expect(spawn).toHaveBeenCalledExactlyOnceWith(
-      'npx',
-      ['vitest', 'run', '--coverage', '--testNamePattern', 'somePattern', 'arg1', 'arg2'],
-      {
-        stdio: 'inherit',
-        shell: true,
-      },
-    );
+    const { command, args } = getSpawnTarget({
+      watch: false,
+      args: ['--coverage', '--testNamePattern', 'somePattern', 'arg1', 'arg2'],
+    });
+
+    expect(spawn).toHaveBeenCalledExactlyOnceWith(command, args, {
+      stdio: 'inherit',
+    });
   });
 
   it('should run by run()', async () => {
     await run({ spawn, skipServices: true });
 
-    expect(spawn).toHaveBeenCalledExactlyOnceWith('npx', ['vitest', 'run'], {
+    const { command, args } = getSpawnTarget({ watch: false });
+
+    expect(spawn).toHaveBeenCalledExactlyOnceWith(command, args, {
       stdio: 'inherit',
-      shell: true,
     });
   });
 
   it('should run by watch()', async () => {
     await watch({ spawn, skipServices: true });
 
-    expect(spawn).toHaveBeenCalledExactlyOnceWith('npx', ['vitest'], {
+    const { command, args } = getSpawnTarget({ watch: true });
+
+    expect(spawn).toHaveBeenCalledExactlyOnceWith(command, args, {
       stdio: 'inherit',
-      shell: true,
     });
   });
 
@@ -148,6 +150,36 @@ describe('tester', () => {
     it('should not include extra arguments when args is empty or absent', () => {
       expect(getArgs({ args: [] })).toStrictEqual(['vitest', 'run']);
       expect(getArgs()).toStrictEqual(['vitest', 'run']);
+    });
+  });
+
+  describe('getSpawnTarget', () => {
+    beforeAll(() => {
+      vi.unstubAllGlobals();
+    });
+
+    it('should return "cmd.exe" with ["/c", "npx", ...] args on Windows', () => {
+      vi.stubGlobal('process', { ...process, platform: 'win32' });
+      expect(getSpawnTarget({ watch: false })).toStrictEqual({
+        command: 'cmd.exe',
+        args: ['/c', 'npx', 'vitest', 'run'],
+      });
+      expect(getSpawnTarget({ watch: true })).toStrictEqual({
+        command: 'cmd.exe',
+        args: ['/c', 'npx', 'vitest'],
+      });
+    });
+
+    it.each(['linux', 'darwin'])('should return "npx" with vitest args on "%s"', (platform) => {
+      vi.stubGlobal('process', { ...process, platform });
+      expect(getSpawnTarget({ watch: false })).toStrictEqual({
+        command: 'npx',
+        args: ['vitest', 'run'],
+      });
+      expect(getSpawnTarget({ watch: true })).toStrictEqual({
+        command: 'npx',
+        args: ['vitest'],
+      });
     });
   });
 });
