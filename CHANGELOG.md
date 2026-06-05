@@ -1,5 +1,19 @@
 # Changelog
 
+## [0.6.4](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.3...barso-v0.6.4) (2026-06-05)
+
+
+### Features
+
+* **test:** forward any vitest arguments ([002d8d1](https://github.com/aprendendofelipe/barso/commit/002d8d1ca324951f54cbfb9e0e5a1e62a5efd721))
+* update test scripts to use agent reporter ([9394970](https://github.com/aprendendofelipe/barso/commit/939497011eee56470e60db541f0c896923bd8d8b))
+
+
+### Bug Fixes
+
+* resolve DEP0190 by removing shell:true from spawn ([b37b603](https://github.com/aprendendofelipe/barso/commit/b37b603e7579089d52a96fe11d6b5327e4601d70))
+* **test script:** run Vitest once instead of watch mode ([8e68bad](https://github.com/aprendendofelipe/barso/commit/8e68bade024117e8b40dc87572b4326c54e3c284))
+
 ## [0.6.3](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.2...barso-v0.6.3) (2026-03-19)
 
 
