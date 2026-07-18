@@ -18,7 +18,7 @@ module.exports = defineConfig([
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
     settings: {
       react: {
-        version: '18',
+        version: '19',
       },
       'import/resolver': {
         node: {
@@ -159,6 +159,14 @@ module.exports = defineConfig([
     },
   },
   {
-    ignores: ['**/.next/**', '**/__snapshots__/*', '**/coverage/**', '**/dist/*'],
+    ignores: [
+      '**/*.d.ts',
+      '**/*.d.ts.map',
+      '**/.next/**',
+      '**/.next-*',
+      '**/__snapshots__/*',
+      '**/coverage/**',
+      '**/dist/*',
+    ],
   },
 ]);
