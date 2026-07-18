@@ -1,22 +1,17 @@
-import react from '@vitejs/plugin-react';
-import tsconfigPaths from 'vite-tsconfig-paths';
 import { defineConfig } from 'vitest/config';
 
 export default function createConfig(customConfig) {
   return defineConfig(
     deepMerge(
       {
-        plugins: [react(), tsconfigPaths()],
+        resolve: {
+          tsconfigPaths: true,
+        },
         test: {
           globals: true,
           fileParallelism: false,
           testTimeout: 60_000,
           hookTimeout: 30_000,
-        },
-        esbuild: {
-          loader: 'jsx',
-          include: /.*\.jsx?$/,
-          exclude: [],
         },
       },
       customConfig,
