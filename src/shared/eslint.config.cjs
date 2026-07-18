@@ -50,7 +50,12 @@ module.exports = defineConfig([
       import: pluginImport,
       'react-hooks': pluginReactHooks,
     },
-    extends: [eslintJs.configs.recommended, tseslint.configs.recommended, pluginReact.configs.flat.recommended],
+    extends: [
+      eslintJs.configs.recommended,
+      tseslint.configs.recommended,
+      pluginReact.configs.flat.recommended,
+      pluginReact.configs.flat['jsx-runtime'],
+    ],
     rules: {
       ...pluginNext.configs.recommended.rules,
       ...pluginNext.configs['core-web-vitals'].rules,
