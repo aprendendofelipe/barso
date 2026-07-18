@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.0](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.5...barso-v0.7.0) (2026-07-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **eslint:** disallow importing Vitest globals
+* **eslint:** enable React JSX runtime preset
+
+### Features
+
+* **eslint:** disallow importing Vitest globals ([c74f2f4](https://github.com/aprendendofelipe/barso/commit/c74f2f43939fc76b94a86580536540c13031fc18))
+* **eslint:** enable React JSX runtime preset ([861b579](https://github.com/aprendendofelipe/barso/commit/861b5797e95a203e1dd51fd0cbb7a9a7b014d014))
+
 ## [0.6.5](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.4...barso-v0.6.5) (2026-07-18)
 
 
