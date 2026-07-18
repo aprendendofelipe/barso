@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.6.5](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.4...barso-v0.6.5) (2026-07-18)
+
+
+### Features
+
+* **linters:** update deps, ignores and React version to 19 ([3b9a2dc](https://github.com/aprendendofelipe/barso/commit/3b9a2dcd28fe4eccd13ee0799b42bebbddfc3832))
+* **Vitest:** remove esbuild settings ([1f847c4](https://github.com/aprendendofelipe/barso/commit/1f847c41e98140b941b8008b2bf1ae0de6900e5b))
+
 ## [0.6.4](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.3...barso-v0.6.4) (2026-06-05)
 
 
