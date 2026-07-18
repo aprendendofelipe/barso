@@ -149,6 +149,7 @@ module.exports = defineConfig([
       'vitest/no-disabled-tests': 'warn',
       'vitest/no-duplicate-hooks': 'warn',
       'vitest/no-focused-tests': 'warn',
+      'vitest/no-importing-vitest-globals': 'warn',
       'vitest/no-standalone-expect': 'warn',
       'vitest/prefer-spy-on': 'warn',
       'vitest/prefer-strict-equal': 'warn',
