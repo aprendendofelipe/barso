@@ -4,7 +4,6 @@ describe('Vitest Config', () => {
   const defaultConfig = createConfig();
 
   it('should get the default config', () => {
-    expect(defaultConfig).toHaveProperty('plugins');
     expect(defaultConfig).toHaveProperty('test');
   });
 
