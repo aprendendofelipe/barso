@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitest/config';
+import { configDefaults, defineConfig } from 'vitest/config';
 
 export default function createConfig(customConfig) {
   return defineConfig(
@@ -12,6 +12,7 @@ export default function createConfig(customConfig) {
           fileParallelism: false,
           testTimeout: 60_000,
           hookTimeout: 30_000,
+          exclude: [...configDefaults.exclude, 'worktrees/**', '.worktrees/**'],
         },
       },
       customConfig,
