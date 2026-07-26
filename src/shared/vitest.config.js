@@ -1,5 +1,9 @@
 import { configDefaults, defineConfig } from 'vitest/config';
 
+/**
+ * @param {Parameters<typeof defineConfig>[0]} [customConfig]
+ * @returns {ReturnType<typeof defineConfig>}
+ */
 export default function createConfig(customConfig) {
   return defineConfig(
     deepMerge(

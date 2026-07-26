@@ -13,7 +13,7 @@ const tseslint = require('typescript-eslint');
 
 const githubReact = pluginGithub.default.getFlatConfigs().react;
 
-module.exports = defineConfig([
+const config = defineConfig([
   {
     files: ['**/*.{js,jsx,mjs,cjs,ts,tsx}'],
     settings: {
@@ -177,3 +177,5 @@ module.exports = defineConfig([
     ],
   },
 ]);
+
+module.exports = config;
