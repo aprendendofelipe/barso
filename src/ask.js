@@ -1,5 +1,11 @@
 import readline from 'node:readline';
 
+/**
+ * @param {string | string[]} question
+ * @param {(answer: string) => void} [callback]
+ * @param {{ createInterface?: typeof readline.createInterface }} [options]
+ * @returns {Promise<string>}
+ */
 export function ask(question, callback, { createInterface } = readline) {
   const rl = createInterface({
     input: process.stdin,

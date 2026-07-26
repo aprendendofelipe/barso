@@ -5,13 +5,29 @@
   "license": "MIT",
   "type": "module",
   "main": "src/index.js",
+  "types": "src/index.d.ts",
   "exports": {
-    ".": "./src/index.js",
-    "./eslint": "./src/shared/eslint.config.cjs",
-    "./lint-staged": "./src/shared/lint-staged.cjs",
+    ".": {
+      "types": "./src/index.d.ts",
+      "default": "./src/index.js"
+    },
+    "./eslint": {
+      "types": "./src/shared/eslint.config.d.cts",
+      "default": "./src/shared/eslint.config.cjs"
+    },
+    "./lint-staged": {
+      "types": "./src/shared/lint-staged.d.cts",
+      "default": "./src/shared/lint-staged.cjs"
+    },
     "./package.json": "./package.json",
-    "./prettier": "./src/shared/prettier.config.cjs",
-    "./vitest": "./src/shared/vitest.config.js"
+    "./prettier": {
+      "types": "./src/shared/prettier.config.d.cts",
+      "default": "./src/shared/prettier.config.cjs"
+    },
+    "./vitest": {
+      "types": "./src/shared/vitest.config.d.ts",
+      "default": "./src/shared/vitest.config.js"
+    }
   },
   "bin": {
     "barso": "bin/tn.js",
@@ -22,13 +38,15 @@
   ],
   "scripts": {
     "barso": "barso",
+    "build:types": "node -e \"fs.globSync('src/**/*.d.*').forEach(f => fs.unlinkSync(f))\" && tsc -p tsconfig.build.json",
+    "pretest": "pnpm build:types",
     "test": "barso test run --reporter agent",
     "test:run": "barso test run",
     "test:watch": "barso test",
     "lint": "eslint . --max-warnings 0 && prettier --check .",
     "format": "eslint --fix . && prettier --write .",
     "commit": "cz",
-    "prepare": "husky",
+    "prepare": "pnpm build:types && husky",
     "pre-commit": "lint-staged"
   },
   "config": {
@@ -62,11 +80,13 @@
   "devDependencies": {
     "@commitlint/cli": "21.2.1",
     "@commitlint/config-conventional": "21.2.0",
+    "@types/node": "26.1.1",
     "barso": "file:",
     "commitizen": "4.3.2",
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
-    "lint-staged": "17.2.0"
+    "lint-staged": "17.2.0",
+    "typescript": "6.0.3"
   },
   "author": "aprendendofelipe",
   "repository": {

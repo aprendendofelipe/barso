@@ -12,6 +12,9 @@ yarn.*
 # Cache & Build
 .cache
 .next
+*.d.*
+.worktrees
+worktrees
 
 # OS & Editor
 .DS_Store
