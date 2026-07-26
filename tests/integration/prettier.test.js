@@ -1,6 +1,5 @@
-import { execSync } from 'node:child_process';
-
 import prettierConfig from 'barso/prettier';
+import { execSync } from 'node:child_process';
 
 describe('Prettier', () => {
   it('should get Prettier shared config', () => {
