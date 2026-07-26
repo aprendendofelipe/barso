@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.7.1](https://github.com/aprendendofelipe/barso/compare/barso-v0.7.0...barso-v0.7.1) (2026-07-26)
+
+
+### Features
+
+* **types:** add TypeScript module declarations ([083b768](https://github.com/aprendendofelipe/barso/commit/083b768d94c70e0a0b6a8228e7b5fe13892e9eaf))
+* **worktrees:** update ignore patterns to exclude worktrees ([b9c20c8](https://github.com/aprendendofelipe/barso/commit/b9c20c8a22f7e34c3b3ef3685490a467a3962ae8))
+
+
+### Bug Fixes
+
+* **eslint-plugin-import:** uses preview compatible with ESLint v10 ([fee4177](https://github.com/aprendendofelipe/barso/commit/fee41779b6d82da54930ba8a4cbd12b31949e999))
+
 ## [0.7.0](https://github.com/aprendendofelipe/barso/compare/barso-v0.6.5...barso-v0.7.0) (2026-07-18)
 
 
