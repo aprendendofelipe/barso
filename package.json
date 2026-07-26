@@ -38,25 +38,25 @@
   },
   "dependencies": {
     "@eslint/js": "10.0.1",
-    "@next/eslint-plugin-next": "16.2.10",
+    "@next/eslint-plugin-next": "16.2.11",
     "@vitest/coverage-v8": "4.1.10",
-    "@vitest/eslint-plugin": "1.6.23",
+    "@vitest/eslint-plugin": "1.6.24",
     "commander": "15.0.0",
     "dotenv": "17.4.2",
     "dotenv-expand": "13.0.0",
-    "eslint": "10.7.0",
+    "eslint": "10.8.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-import-resolver-typescript": "4.4.5",
     "eslint-plugin-github": "6.1.1",
-    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-import": "npm:@barso/eslint-plugin-import@2.32.0-eslint10-preview.1",
     "eslint-plugin-prettier": "5.5.6",
     "eslint-plugin-primer-react": "9.1.0",
     "eslint-plugin-react": "7.37.5",
     "eslint-plugin-react-hooks": "7.1.1",
     "globals": "17.7.0",
     "jsdom": "29.1.1",
-    "prettier": "3.9.5",
-    "typescript-eslint": "8.64.0",
+    "prettier": "3.9.6",
+    "typescript-eslint": "8.65.0",
     "vitest": "4.1.10"
   },
   "devDependencies": {
@@ -66,7 +66,7 @@
     "commitizen": "4.3.2",
     "cz-conventional-changelog": "3.3.0",
     "husky": "9.1.7",
-    "lint-staged": "17.0.8"
+    "lint-staged": "17.2.0"
   },
   "author": "aprendendofelipe",
   "repository": {
