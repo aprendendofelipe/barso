@@ -1,6 +1,6 @@
 {
   "name": "barso",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "Configurações compartilhadas para projetos JS/TS",
   "license": "MIT",
   "type": "module",
