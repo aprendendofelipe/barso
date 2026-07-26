@@ -166,13 +166,14 @@ module.exports = defineConfig([
   },
   {
     ignores: [
-      '**/*.d.ts',
-      '**/*.d.ts.map',
+      '**/*.d.*',
       '**/.next/**',
       '**/.next-*',
       '**/__snapshots__/*',
       '**/coverage/**',
       '**/dist/*',
+      'worktrees/**',
+      '.worktrees/**',
     ],
   },
 ]);
